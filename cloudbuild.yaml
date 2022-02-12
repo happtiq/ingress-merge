@@ -11,11 +11,15 @@ steps:
            'europe-west4-docker.pkg.dev/${PROJECT_ID}/docker-images/${REPO_NAME}']
 
   # Helm Package
-  - name: 'gcr.io/cloud-builders/helm'
+  - name: 'gcr.io/${PROJECT_ID}/helm'
     args: ['package', 
            'helm']
+    env:
+    - 'SKIP_CLUSTER_CONFIG=true'
 
   # Helm Push
-  - name: 'gcr.io/cloud-builders/helm'
+  - name: 'gcr.io/${PROJECT_ID}/helm'
     args: ['push', 
-           'ingress-merge-0.1-alpha1.tgz oci://europe-west4-docker.pkg.dev/${PROJECT_ID}/docker-images/${REPO_NAME}']
+           '/workspace/ingress-merge-0.1-alpha1.tgz', 'oci://europe-west4-docker.pkg.dev/${PROJECT_ID}/helm-charts']
+    env:
+    - 'SKIP_CLUSTER_CONFIG=true'
