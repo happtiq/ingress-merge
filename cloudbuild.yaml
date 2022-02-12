@@ -9,3 +9,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 
            'europe-west4-docker.pkg.dev/${PROJECT_ID}/docker-images/${REPO_NAME}']
+
+  # Helm Package
+  - name: 'gcr.io/cloud-builders/helm'
+    args: ['package', 
+           'helm']
+
+  # Helm Push
+  - name: 'gcr.io/cloud-builders/helm'
+    args: ['push', 
+           'ingress-merge-0.1-alpha1.tgz oci://europe-west4-docker.pkg.dev/${PROJECT_ID}/docker-images/${REPO_NAME}']
