@@ -20,7 +20,7 @@ rbac:
   serviceAccountName: default
 
 image:
-  repository: jakubkulhan/ingress-merge
+  repository: europe-west4-docker.pkg.dev/happtiq-hosting/docker-images/ingress-merge
   tag: latest
   pullPolicy: Always
 
