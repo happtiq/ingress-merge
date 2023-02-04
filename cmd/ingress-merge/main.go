@@ -143,7 +143,7 @@ func main() {
 
 	rootCmd.Flags().Int(
 		"ingress-max-slots",
-		100,
+		150,
 		"the ingress provider may have a limit of number of ingress rules and paths, i.e: GCE ingress controller",
 	)
 
