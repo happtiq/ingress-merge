@@ -79,4 +79,4 @@ require (
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
-replace github.com/tsuru/ingress-merge v0.3.5 => github.com/happtiq/ingress-merge v0.3.5-0.20230204192326-00b478a40c1c
+replace github.com/tsuru/ingress-merge v0.3.5 => github.com/happtiq/ingress-merge v0.3.5-0.20250203165216-eca5c8f4e61d
