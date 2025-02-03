@@ -143,7 +143,9 @@ func main() {
 
 	rootCmd.Flags().Int(
 		"ingress-max-slots",
-		150,
+		1000, 
+		// GCP increased the limits some time ago, current limits: 
+		// https://cloud.google.com/load-balancing/docs/quotas#url_maps
 		"the ingress provider may have a limit of number of ingress rules and paths, i.e: GCE ingress controller",
 	)
 
