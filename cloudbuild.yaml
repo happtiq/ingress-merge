@@ -20,6 +20,6 @@ steps:
   # Helm Push
   - name: 'gcr.io/${PROJECT_ID}/helm'
     args: ['push', 
-           '/workspace/ingress-merge-0.4.0.tgz', 'oci://europe-west4-docker.pkg.dev/${PROJECT_ID}/helm-charts']
+           '/workspace/ingress-merge-0.5.0.tgz', 'oci://europe-west4-docker.pkg.dev/${PROJECT_ID}/helm-charts']
     env:
     - 'SKIP_CLUSTER_CONFIG=true'
