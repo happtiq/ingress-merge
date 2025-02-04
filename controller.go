@@ -10,6 +10,7 @@ import (
 	"github.com/ghodss/yaml"
 	"github.com/go-logr/logr"
 	multierror "github.com/hashicorp/go-multierror"
+	"github.com/prometheus/client_golang/prometheus"
 	corev1 "k8s.io/api/core/v1"
 	networkingv1 "k8s.io/api/networking/v1"
 	k8sErrors "k8s.io/apimachinery/pkg/api/errors"
@@ -40,6 +41,21 @@ const (
 )
 
 var _ reconcile.Reconciler = &IngressReconciler{}
+
+var (
+	PathsTotal = prometheus.NewCounter(
+		prometheus.CounterOpts{
+			Name: "paths_in_use_total",
+			Help: "How many path rules are currently being used",
+		},
+	)
+	BucketsTotal = prometheus.NewCounter(
+		prometheus.CounterOpts{
+			Name: "buckets_in_use_total",
+			Help: "How many (internal) Ingress Buckets are currently being used",
+		},
+	)
+)
 
 type IngressReconciler struct {
 	client.Client

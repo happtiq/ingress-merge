@@ -5,14 +5,15 @@ import (
 	"log"
 	"os"
 
+	ingress_merge "github.com/happtiq/ingress-merge"
 	"github.com/spf13/cobra"
-	ingress_merge "github.com/tsuru/ingress-merge"
 	"k8s.io/api/node/v1alpha1"
 	"k8s.io/apimachinery/pkg/runtime"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
+	"sigs.k8s.io/controller-runtime/pkg/metrics"
 )
 
 var (
@@ -23,6 +24,7 @@ var (
 func init() {
 	_ = clientgoscheme.AddToScheme(scheme)
 	_ = v1alpha1.AddToScheme(scheme)
+	metrics.Registry.MustRegister(ingress_merge.PathsTotal, ingress_merge.BucketsTotal)
 	// +kubebuilder:scaffold:scheme
 }
 
@@ -143,8 +145,8 @@ func main() {
 
 	rootCmd.Flags().Int(
 		"ingress-max-slots",
-		1000, 
-		// GCP increased the limits some time ago, current limits: 
+		1000,
+		// GCP increased the limits some time ago, current limits:
 		// https://cloud.google.com/load-balancing/docs/quotas#url_maps
 		"the ingress provider may have a limit of number of ingress rules and paths, i.e: GCE ingress controller",
 	)

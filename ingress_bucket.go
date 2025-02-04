@@ -111,6 +111,7 @@ func GenerateIngressBuckets(origins, destinations []networkingv1.Ingress, maxSer
 	result := []*IngressBucket{}
 	result = append(result, bucketsWithDestination...)
 	result = append(result, bucketsWithoutDestination...)
+	BucketsTotal.Add(float64(len(result)))
 	return result
 }
 
@@ -123,6 +124,7 @@ func ingressSlots(ingress *networkingv1.Ingress) int {
 			paths = 1
 		}
 		slots += paths
+		PathsTotal.Add(float64(paths))
 	}
 
 	if slots == 0 {

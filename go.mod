@@ -8,9 +8,9 @@ require (
 	github.com/ghodss/yaml v1.0.0
 	github.com/go-logr/logr v0.4.0
 	github.com/hashicorp/go-multierror v1.0.0
+	github.com/prometheus/client_golang v1.11.0
 	github.com/spf13/cobra v1.1.3
 	github.com/stretchr/testify v1.7.0
-	github.com/tsuru/ingress-merge v0.3.5
 	k8s.io/api v0.21.3
 	k8s.io/apimachinery v0.21.3
 	k8s.io/client-go v0.21.3
@@ -49,7 +49,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/prometheus/client_golang v1.11.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.26.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
@@ -79,4 +78,4 @@ require (
 	sigs.k8s.io/yaml v1.2.0 // indirect
 )
 
-replace github.com/tsuru/ingress-merge v0.3.5 => github.com/happtiq/ingress-merge v0.3.5-0.20250203165216-eca5c8f4e61d
+replace github.com/tsuru/ingress-merge v0.3.5 => github.com/happtiq/ingress-merge v0.3.5-0.20250204121540-f9bc1d823a4f
